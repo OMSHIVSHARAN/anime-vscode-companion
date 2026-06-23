@@ -1,4 +1,4 @@
-# 🌸 Nezuko VS Code Companion
+# VS Code Companion
 
 An anime desktop companion featuring **Nezuko Kamado** that lives beside your VS Code window and reacts to your coding activity in real time.
 
