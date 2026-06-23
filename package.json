@@ -1,0 +1,19 @@
+{
+  "name": "anime-vscode-companion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nezuko VS Code Companion — anime character that reacts to your coding",
+  "workspaces": [
+    "extension",
+    "companion"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm install --prefix extension && npm install --prefix companion",
+    "build": "npm run build --prefix extension && npm run build --prefix companion",
+    "dev:companion": "npm run dev --prefix companion",
+    "dev:extension": "npm run watch --prefix extension",
+    "package:extension": "npm run package --prefix extension"
+  },
+  "author": "",
+  "license": "MIT"
+}

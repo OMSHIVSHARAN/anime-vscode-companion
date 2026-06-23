@@ -1,0 +1,82 @@
+{
+  "name": "nezuko-companion",
+  "displayName": "Nezuko VS Code Companion 🌸",
+  "description": "An anime companion that lives beside VS Code and reacts to your coding activity",
+  "version": "1.0.0",
+  "publisher": "nezuko-companion",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other", "Visualization"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nezuko.openCompanion",
+        "title": "Nezuko: Open Companion Window"
+      },
+      {
+        "command": "nezuko.launchDesktop",
+        "title": "Nezuko: Launch Desktop Companion"
+      },
+      {
+        "command": "nezuko.toggleConnection",
+        "title": "Nezuko: Toggle Companion Connection"
+      },
+      {
+        "command": "nezuko.showStats",
+        "title": "Nezuko: Show Coding Stats"
+      }
+    ],
+    "configuration": {
+      "title": "Nezuko Companion",
+      "properties": {
+        "nezukoCompanion.websocketPort": {
+          "type": "number",
+          "default": 47832,
+          "description": "WebSocket port for companion app connection"
+        },
+        "nezukoCompanion.idleTimeoutMinutes": {
+          "type": "number",
+          "default": 5,
+          "description": "Minutes of inactivity before companion gets sleepy"
+        },
+        "nezukoCompanion.enableGitTracking": {
+          "type": "boolean",
+          "default": true,
+          "description": "Track git commits and notify companion"
+        },
+        "nezukoCompanion.buildSuccessPatterns": {
+          "type": "array",
+          "default": ["compiled successfully", "build succeeded", "webpack compiled", "✓", "successfully compiled", "done in"],
+          "description": "Terminal patterns that indicate successful build"
+        },
+        "nezukoCompanion.buildFailurePatterns": {
+          "type": "array",
+          "default": ["error TS", "failed to compile", "build failed", "✖", "ERR!", "SyntaxError", "Test failed", "FAIL "],
+          "description": "Terminal patterns that indicate build/test failure"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@types/ws": "^8.5.10",
+    "typescript": "^5.3.3",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}
